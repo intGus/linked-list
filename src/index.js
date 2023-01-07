@@ -1,12 +1,11 @@
 import LinkedList from "./ListClass";
 
-console.log('linked list enabled')
-const ll = new LinkedList();
-ll.prepend(100);
-ll.prepend(3000);
-ll.prepend(200);
-ll.prepend(40000);
-ll.append(200)
-ll.toString()
+console.log('You can access the Linked List functions using "list.<function>"')
+const list = new LinkedList();
+list.prepend(100);
+list.prepend(3000);
+list.prepend(200);
+list.prepend(40000);
+list.append(200)
 
-window.ll = ll
+window.list = list;
