@@ -96,11 +96,12 @@ export default class LinkedList {
 
   toString() {
     let current = this._head;
-
+    let string = ''
     while (current) {
-      console.log(current.value);
+      string += `( ${current.value} ) -> `;
       current = current.nextNode;
     }
+    return string + 'null';
   }
 
   // Insert at index
@@ -110,11 +111,12 @@ export default class LinkedList {
       return;
     }
 
-    // If first index or last index
+    // If first index or list empty
     if (index === 0 || !this._head) {
       this.prepend(value);
       return;
     } else if (index === this._size) {
+      //If insert after tail
       this.append(value);
       return;
     }
