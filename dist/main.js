@@ -108,11 +108,12 @@ class LinkedList {
 
   toString() {
     let current = this._head;
-
+    let string = ''
     while (current) {
-      console.log(current.value);
+      string += `( ${current.value} ) -> `;
       current = current.nextNode;
     }
+    return string + 'null';
   }
 
   // Insert at index
@@ -122,11 +123,12 @@ class LinkedList {
       return;
     }
 
-    // If first index or last index
+    // If first index or list empty
     if (index === 0 || !this._head) {
       this.prepend(value);
       return;
     } else if (index === this._size) {
+      //If insert after tail
       this.append(value);
       return;
     }
@@ -204,6 +206,21 @@ class Node {
 }
 
 
+/***/ }),
+/* 3 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "printResult": () => (/* binding */ printResult)
+/* harmony export */ });
+
+
+function printResult(string) {
+  document.getElementById('result').textContent = string
+  console.log(string)
+}
+
 /***/ })
 /******/ 	]);
 /************************************************************************/
@@ -266,17 +283,21 @@ var __webpack_exports__ = {};
 (() => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ListClass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _DomStuff__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
 
 
-console.log('linked list enabled')
-const ll = new _ListClass__WEBPACK_IMPORTED_MODULE_0__["default"]();
-ll.prepend(100);
-ll.prepend(3000);
-ll.prepend(200);
-ll.prepend(40000);
-ll.toString()
 
-window.ll = ll
+console.log('You can access the Linked List functions using "list.<function>"')
+const list = new _ListClass__WEBPACK_IMPORTED_MODULE_0__["default"]();
+list.prepend(100);
+list.prepend(3000);
+list.prepend(200);
+list.prepend(40000);
+list.append(200)
+
+;(0,_DomStuff__WEBPACK_IMPORTED_MODULE_1__.printResult)(list.toString)
+
+window.list = list;
 })();
 
 /******/ })()

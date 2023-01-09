@@ -1,4 +1,5 @@
 import Node from "./NodeClass";
+import { printResult } from "./DomStuff";
 
 export default class LinkedList {
   constructor() {
@@ -21,6 +22,7 @@ export default class LinkedList {
     }
 
     this._size += 1;
+    document.dispatchEvent(new Event('listModified'));
   }
 
   // Insert at start
@@ -31,7 +33,9 @@ export default class LinkedList {
     } else {
       this._head = new Node(value, this._head);
     }
+
     this._size += 1;
+    document.dispatchEvent(new Event('listModified'));
   }
 
   size() {
@@ -72,6 +76,7 @@ export default class LinkedList {
     this._tail = current
     this._size -= 1;
 
+    document.dispatchEvent(new Event('listModified'));
   }
 
   // Returns true if the value exist in the list
@@ -101,6 +106,7 @@ export default class LinkedList {
       string += `( ${current.value} ) -> `;
       current = current.nextNode;
     }
+
     return string + 'null';
   }
 
@@ -138,6 +144,7 @@ export default class LinkedList {
     node.nextNode = current;
     previous.nextNode = node;
 
+    document.dispatchEvent(new Event('listModified'));
     this._size += 1;
   }
 
@@ -166,7 +173,8 @@ export default class LinkedList {
 
       previous.nextNode = current.nextNode;
     }
-
+    
+    document.dispatchEvent(new Event('listModified'));
     this._size -= 1;
   }
 
@@ -174,5 +182,5 @@ export default class LinkedList {
   //   this._head = null;
   //   this._size = 0;
   // }
-  
+
 }
