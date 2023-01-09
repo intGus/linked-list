@@ -10,6 +10,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ LinkedList)
 /* harmony export */ });
 /* harmony import */ var _NodeClass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _DomStuff__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
+
 
 
 class LinkedList {
@@ -33,6 +35,7 @@ class LinkedList {
     }
 
     this._size += 1;
+    document.dispatchEvent(new Event('listModified'));
   }
 
   // Insert at start
@@ -43,7 +46,9 @@ class LinkedList {
     } else {
       this._head = new _NodeClass__WEBPACK_IMPORTED_MODULE_0__["default"](value, this._head);
     }
+
     this._size += 1;
+    document.dispatchEvent(new Event('listModified'));
   }
 
   size() {
@@ -84,6 +89,7 @@ class LinkedList {
     this._tail = current
     this._size -= 1;
 
+    document.dispatchEvent(new Event('listModified'));
   }
 
   // Returns true if the value exist in the list
@@ -113,6 +119,7 @@ class LinkedList {
       string += `( ${current.value} ) -> `;
       current = current.nextNode;
     }
+
     return string + 'null';
   }
 
@@ -150,6 +157,7 @@ class LinkedList {
     node.nextNode = current;
     previous.nextNode = node;
 
+    document.dispatchEvent(new Event('listModified'));
     this._size += 1;
   }
 
@@ -178,7 +186,8 @@ class LinkedList {
 
       previous.nextNode = current.nextNode;
     }
-
+    
+    document.dispatchEvent(new Event('listModified'));
     this._size -= 1;
   }
 
@@ -186,7 +195,7 @@ class LinkedList {
   //   this._head = null;
   //   this._size = 0;
   // }
-  
+
 }
 
 
@@ -214,11 +223,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "printResult": () => (/* binding */ printResult)
 /* harmony export */ });
-
-
 function printResult(string) {
   document.getElementById('result').textContent = string
-  console.log(string)
 }
 
 /***/ })
@@ -289,15 +295,20 @@ __webpack_require__.r(__webpack_exports__);
 
 console.log('You can access the Linked List functions using "list.<function>"')
 const list = new _ListClass__WEBPACK_IMPORTED_MODULE_0__["default"]();
+window.list = list;
+
+document.addEventListener("listModified", function(){
+  (0,_DomStuff__WEBPACK_IMPORTED_MODULE_1__.printResult)(list.toString())
+});
+
 list.prepend(100);
 list.prepend(3000);
 list.prepend(200);
 list.prepend(40000);
 list.append(200)
 
-;(0,_DomStuff__WEBPACK_IMPORTED_MODULE_1__.printResult)(list.toString)
 
-window.list = list;
+
 })();
 
 /******/ })()
