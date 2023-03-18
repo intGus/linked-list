@@ -1,4 +1,4 @@
-# [Linked List Demo](https://intgus.github.io/linked-list/)
+# Linked List [Demo](https://intgus.github.io/linked-list/)
 
 Made following [The Odin Project Assignment](https://www.theodinproject.com/lessons/javascript-linked-lists#assignment) for Linked Lists, you can use the console on the [live demo](https://intgus.github.io/linked-list/) to interact with a Linked List.
 
