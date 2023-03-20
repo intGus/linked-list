@@ -1,9 +1,13 @@
-main {
-  height: 70vh;
+body {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+main {
+  padding-bottom: 2.5rem;
 }
 
 div {
@@ -28,4 +32,32 @@ div.bottom {
   height: 157px;
 
   background: #EAEBF1;
+}
+
+.footer {
+  font-family: 'DotGothic16';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 2.5rem;
+  padding: 10px;
+  font-size: 13px;
+  background-color: rgb(243, 242, 242);
+}
+
+.fa-github:hover {
+  animation: wiggle infinite 1s linear;
+}
+
+@keyframes wiggle {
+  0% {transform: scale(1.2) rotate(0deg);}
+  25% {transform: scale(1.2) rotate(-20deg);}
+  50% {transform: scale(1.2) rotate(0deg);}
+  75% {transform: scale(1.2) rotate(20deg);}
+  100% {transform: scale(1.2) rotate(0deg);}
 }
